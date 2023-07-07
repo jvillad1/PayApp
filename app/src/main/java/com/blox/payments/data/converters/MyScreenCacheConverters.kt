@@ -38,7 +38,10 @@ class MyScreenCacheConverters {
                 PolymorphicJsonAdapterFactory.of(BodyRowModel::class.java, "type")
                     .withSubtype(CrossSellingModel::class.java, BodyRowType.CROSS_SELLING.name)
                     .withSubtype(MessageModel::class.java, BodyRowType.MESSAGE.name)
-                    .withSubtype(PaymentMethodInfoModel::class.java, BodyRowType.PAYMENT_METHOD_INFO.name)
+                    .withSubtype(
+                        PaymentMethodInfoModel::class.java,
+                        BodyRowType.PAYMENT_METHOD_INFO.name
+                    )
                     .withSubtype(NestedBodyModel::class.java, BodyRowType.SECTION.name)
             )
             .add(KotlinJsonAdapterFactory())
