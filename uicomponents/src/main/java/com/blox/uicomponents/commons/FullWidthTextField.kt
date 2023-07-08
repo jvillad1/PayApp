@@ -19,11 +19,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import timber.log.Timber
 
 @Composable
 fun FullWidthTextField(
     hint: String,
-    keyboardOptions: KeyboardOptions? = null
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    onValueChange: (TextFieldValue) -> Unit
 ) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -37,11 +39,12 @@ fun FullWidthTextField(
             value = text,
             onValueChange = { fieldValue ->
                 text = fieldValue
+                onValueChange(fieldValue)
             },
             modifier = Modifier.fillMaxWidth(.8f),
             textStyle = TextStyle.Default,
             label = { Text(text = hint) },
-            keyboardOptions = keyboardOptions ?: KeyboardOptions.Default
+            keyboardOptions = keyboardOptions
         )
     }
 }
@@ -55,5 +58,7 @@ fun FullWidthTextFieldPreview() {
             capitalization = KeyboardCapitalization.Words,
             keyboardType = KeyboardType.Text
         )
-    )
+    ) {
+        Timber.d("TextField state updated with: $it")
+    }
 }
