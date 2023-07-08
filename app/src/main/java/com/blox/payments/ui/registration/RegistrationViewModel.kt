@@ -5,17 +5,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blox.payments.domain.myscreen.usecases.GetMyScreen
+import com.blox.payments.domain.registration.usecases.ValidateLegalName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
-    private val getMyScreen: GetMyScreen
+    private val validateLegalName: ValidateLegalName
 ) : ViewModel() {
 
     private var fetchJob: Job? = null
@@ -35,16 +36,16 @@ class RegistrationViewModel @Inject constructor(
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(Dispatchers.IO) {
             Timber.d("First name: ${uiState.firstName} and Last name: ${uiState.lastName}")
-//            getMyScreen.invoke(id)
-//                .onSuccess { myScreenModel ->
-//                    Timber.d("This is a success")
-//                    withContext(Dispatchers.Main) {
-//                        uiState = uiState.copy(myScreenModel = myScreenModel)
-//                    }
-//                }
-//                .onFailure { throwable ->
-//                    Timber.wtf(throwable, "This is a failure")
-//                }
+            validateLegalName.invoke(uiState.firstName, uiState.lastName)
+                .onSuccess { isValid ->
+                    Timber.d("This is a success")
+                    withContext(Dispatchers.Main) {
+                        uiState = uiState.copy(legalNameCompleted = isValid)
+                    }
+                }
+                .onFailure { throwable ->
+                    Timber.wtf(throwable, "This is a failure")
+                }
         }
     }
 }

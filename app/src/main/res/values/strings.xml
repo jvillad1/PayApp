@@ -10,4 +10,7 @@
     <string name="registration_last_name_label">Last Name</string>
     <string name="registration_continue_cta">Continue</string>
 
+    <string name="registration_birth_date_title">What is your birth date?</string>
+    <string name="registration_birth_date_description">We need to verify that you are 18 years old or older.</string>
+
 </resources>

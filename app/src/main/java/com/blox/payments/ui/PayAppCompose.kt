@@ -13,9 +13,7 @@ import com.blox.payments.ui.registration.RegistrationScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 
 @Composable
-fun PayAppCompose(
-    modifier: Modifier = Modifier
-) {
+fun PayAppCompose() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
