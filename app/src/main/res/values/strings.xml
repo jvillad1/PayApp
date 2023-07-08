@@ -2,4 +2,8 @@
     <string name="app_name">Application POC</string>
     <string name="fetch_input_error_message">Input is not as required, this is unexpected, needs to be handled</string>
     <string name="fetch_result_error_message">Something is empty, this is unexpected, needs to be handled</string>
+
+    <!-- Registration -->
+    <string name="registration_legal_name_title">What is your legal name?</string>
+
 </resources>

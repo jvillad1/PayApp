@@ -60,7 +60,6 @@ fun NoNetworkScreen(
             ) {
                 Text(
                     text = stringResource(id = R.string.network_error_cta),
-
                     color = MaterialTheme.colorScheme.onPrimary
                 )
             }
