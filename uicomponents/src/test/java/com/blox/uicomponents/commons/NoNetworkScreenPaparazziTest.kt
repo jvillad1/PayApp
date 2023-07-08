@@ -3,7 +3,6 @@ package com.blox.uicomponents.commons
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import com.android.ide.common.rendering.api.SessionParams
-import com.blox.uicomponents.common.NoNetworkScreen
 import org.junit.Rule
 import org.junit.Test
 import timber.log.Timber

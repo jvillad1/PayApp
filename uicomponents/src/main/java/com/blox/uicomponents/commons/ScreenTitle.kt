@@ -1,4 +1,4 @@
-package com.blox.uicomponents.common
+package com.blox.uicomponents.commons
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -36,5 +36,5 @@ fun ScreenTitle(
 @Preview(showBackground = true)
 @Composable
 fun ScreenTitlePreview() {
-    ScreenTitle("Welcome")
+    ScreenTitle("What is your legal name?")
 }

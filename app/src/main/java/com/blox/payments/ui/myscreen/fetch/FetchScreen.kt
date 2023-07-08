@@ -10,7 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.blox.uicomponents.common.NoNetworkScreen
+import com.blox.uicomponents.commons.NoNetworkScreen
 import kotlinx.coroutines.launch
 
 @Composable

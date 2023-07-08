@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.blox.payments.ui.registration.RegistrationNameScreen
+import com.blox.payments.ui.registration.RegistrationScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 import kotlinx.coroutines.CoroutineScope
 
@@ -25,7 +25,7 @@ fun PayAppCompose(
         composable(
             route = NavigationRoute.REGISTRATION_NAME
         ) {
-            RegistrationNameScreen(onClick = {})
+            RegistrationScreen(onClick = {})
         }
     }
 }

@@ -5,5 +5,9 @@
 
     <!-- Registration -->
     <string name="registration_legal_name_title">What is your legal name?</string>
+    <string name="registration_legal_name_description">Please enter your legal name, which must match your government ID.</string>
+    <string name="registration_first_name_label">First Name</string>
+    <string name="registration_last_name_label">Last Name</string>
+    <string name="registration_continue_cta">Continue</string>
 
 </resources>

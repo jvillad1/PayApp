@@ -1,4 +1,4 @@
-package com.blox.uicomponents.common
+package com.blox.uicomponents.commons
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
