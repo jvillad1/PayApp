@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pay App</string>
+    <string name="app_name">GoDirectPay</string>
     <string name="fetch_input_error_message">Input is not as required, this is unexpected, needs to be handled</string>
     <string name="fetch_result_error_message">Something is empty, this is unexpected, needs to be handled</string>
 
