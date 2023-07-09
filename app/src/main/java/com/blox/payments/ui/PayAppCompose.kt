@@ -9,6 +9,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.blox.payments.ui.landing.LandingScreen
+import com.blox.payments.ui.login.LoginScreen
 import com.blox.payments.ui.registration.RegistrationScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 
@@ -17,8 +19,18 @@ fun PayAppCompose() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = NavigationRoute.REGISTRATION
+        startDestination = NavigationRoute.LANDING
     ) {
+        composable(
+            route = NavigationRoute.LANDING
+        ) {
+            LandingScreen()
+        }
+        composable(
+            route = NavigationRoute.LOGIN
+        ) {
+            LoginScreen()
+        }
         composable(
             route = NavigationRoute.REGISTRATION
         ) {

@@ -34,6 +34,25 @@ android {
             )
         }
     }
+
+    flavorDimensions += "company"
+    productFlavors {
+        create("whitelabel") {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension = "company"
+            applicationIdSuffix = ".whitelabel"
+            versionNameSuffix = "-whitelabel"
+        }
+        create("directpay") {
+            dimension = "company"
+            applicationIdSuffix = ".directpay"
+            versionNameSuffix = "-directpay"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
