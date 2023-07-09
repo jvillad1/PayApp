@@ -15,13 +15,13 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class LandingViewModel @Inject constructor(
+class WelcomeViewModel @Inject constructor(
     private val validateLegalName: ValidateLegalName
 ) : ViewModel() {
 
     private var fetchJob: Job? = null
 
-    var uiState by mutableStateOf(LandingUiState())
+    var uiState by mutableStateOf(WelcomeUiState())
         private set
 
     fun updateFirstName(firstNameInput: String) {

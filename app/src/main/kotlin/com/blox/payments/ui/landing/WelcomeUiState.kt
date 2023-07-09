@@ -1,6 +1,6 @@
 package com.blox.payments.ui.landing
 
-data class LandingUiState(
+data class WelcomeUiState(
     val firstName: String? = null,
     val lastName: String? = null,
     val legalNameCompleted: Boolean = false,
