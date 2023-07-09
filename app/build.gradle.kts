@@ -105,7 +105,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.6.0")
 
     // Networking
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.11.0"))
 
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
@@ -125,7 +125,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.2")
 
     // Media
-    implementation("com.google.accompanist:accompanist-placeholder-material:0.13.0")
+    implementation("com.google.accompanist:accompanist-placeholder-material:0.30.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("com.airbnb.android:lottie-compose:6.0.1")
 
