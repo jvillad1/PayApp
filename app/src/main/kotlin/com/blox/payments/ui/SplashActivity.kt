@@ -13,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+private const val SPLASH_DURATION_MILLIS = 2_000L
+
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : ComponentActivity() {
@@ -25,7 +27,7 @@ class SplashActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                delay(3000)
+                delay(SPLASH_DURATION_MILLIS)
 
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
