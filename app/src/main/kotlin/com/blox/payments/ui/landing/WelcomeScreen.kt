@@ -18,14 +18,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.blox.payments.R
-import com.blox.payments.ui.theme.Blue_40
 import timber.log.Timber
 
 @Composable
 fun WelcomeScreen() {
     Column(
         modifier = Modifier.fillMaxSize()
-            .background(Blue_40),
+            .background(MaterialTheme.colorScheme.primary),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
@@ -34,7 +33,9 @@ fun WelcomeScreen() {
             modifier = Modifier.padding(start = 20.dp, top = 60.dp)
         )
         Row(
-            modifier = Modifier.fillMaxWidth().padding(20.dp).weight(1f, false),
+            modifier = Modifier.fillMaxWidth()
+                .padding(start = 40.dp, end = 40.dp, bottom = 40.dp)
+                .weight(1f, false),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button(

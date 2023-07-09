@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
-import com.blox.payments.ui.theme.Blue_40
 import com.blox.uicomponents.commons.BodyLargeText
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
@@ -133,9 +133,14 @@ fun BirthDateScreen(viewModel: RegistrationViewModel) {
         ) {
             // Creating a button that on
             // click displays/shows the DatePickerDialog
-            Button(onClick = {
-                mDatePickerDialog.show()
-            }, colors = ButtonDefaults.buttonColors(containerColor = Blue_40)) {
+            Button(
+                onClick = {
+                    mDatePickerDialog.show()
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
+            ) {
                 Text(text = "Open Date Picker", color = Color.White)
             }
 
