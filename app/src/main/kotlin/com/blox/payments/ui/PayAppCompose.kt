@@ -9,6 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.blox.payments.ui.home.HomeScreen
 import com.blox.payments.ui.landing.WelcomeScreen
 import com.blox.payments.ui.login.LoginScreen
 import com.blox.payments.ui.registration.RegistrationScreen
@@ -24,17 +25,32 @@ fun PayAppCompose() {
         composable(
             route = NavigationRoute.WELCOME
         ) {
-            WelcomeScreen()
+            WelcomeScreen { destination ->
+                navController.navigate(destination)
+            }
         }
         composable(
             route = NavigationRoute.LOGIN
         ) {
-            LoginScreen()
+            LoginScreen(
+                onSuccessfulLogin = { navController.navigate(NavigationRoute.HOME) },
+                onForgotPassword = { navController.navigate(NavigationRoute.FORGOT_PASSWORD) }
+            )
+        }
+        composable(
+            route = NavigationRoute.FORGOT_PASSWORD
+        ) {
+            RegistrationScreen()
         }
         composable(
             route = NavigationRoute.REGISTRATION
         ) {
             RegistrationScreen()
+        }
+        composable(
+            route = NavigationRoute.HOME
+        ) {
+            HomeScreen()
         }
     }
 }

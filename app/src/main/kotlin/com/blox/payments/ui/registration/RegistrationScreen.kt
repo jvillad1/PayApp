@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -59,10 +57,13 @@ fun RegistrationScreen() {
 @Composable
 fun LegalNameScreen(viewModel: RegistrationViewModel) {
     Column {
-        ScreenTitle(title = stringResource(id = R.string.registration_legal_name_title))
+        ScreenTitle(
+            title = stringResource(id = R.string.registration_legal_name_title),
+            paddingTop = 40.dp
+        )
         BodyLargeText(text = stringResource(id = R.string.registration_legal_name_description))
         FullWidthTextField(
-            hint = stringResource(id = R.string.registration_first_name_label),
+            hint = stringResource(id = R.string.registration_legal_name_first_name_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text
@@ -71,7 +72,7 @@ fun LegalNameScreen(viewModel: RegistrationViewModel) {
             viewModel.updateFirstName(it.text)
         }
         FullWidthTextField(
-            hint = stringResource(id = R.string.registration_last_name_label),
+            hint = stringResource(id = R.string.registration_legal_name_last_name_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text
@@ -79,7 +80,7 @@ fun LegalNameScreen(viewModel: RegistrationViewModel) {
         ) {
             viewModel.updateLastName(it.text)
         }
-        FullWidthButton(text = stringResource(id = R.string.registration_continue_cta)) {
+        FullWidthButton(text = stringResource(id = R.string.registration_legal_name_continue_cta)) {
             viewModel.validateLegalName()
         }
     }
@@ -88,7 +89,10 @@ fun LegalNameScreen(viewModel: RegistrationViewModel) {
 @Composable
 fun BirthDateScreen(viewModel: RegistrationViewModel) {
     Column {
-        ScreenTitle(title = stringResource(id = R.string.registration_birth_date_title))
+        ScreenTitle(
+            title = stringResource(id = R.string.registration_birth_date_title),
+            paddingTop = 40.dp
+        )
         BodyLargeText(text = stringResource(id = R.string.registration_birth_date_description))
 
         // Fetching the Local Context
@@ -136,10 +140,7 @@ fun BirthDateScreen(viewModel: RegistrationViewModel) {
             Button(
                 onClick = {
                     mDatePickerDialog.show()
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
+                }
             ) {
                 Text(text = "Open Date Picker", color = Color.White)
             }

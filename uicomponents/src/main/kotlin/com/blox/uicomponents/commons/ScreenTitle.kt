@@ -11,16 +11,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ScreenTitle(
-    title: String
+    title: String,
+    paddingTop: Dp = 40.dp
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 40.dp),
+            .padding(top = paddingTop),
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
@@ -36,5 +38,5 @@ fun ScreenTitle(
 @Preview(showBackground = true)
 @Composable
 fun ScreenTitlePreview() {
-    ScreenTitle("What is your legal name?")
+    ScreenTitle("What is your legal name?", 40.dp)
 }
