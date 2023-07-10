@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.blox.payments.BuildConfig
 import com.blox.payments.R
+import com.blox.payments.commons.constants.WHITE_LABEL_FLAVOR
 import com.blox.payments.ui.NavigationRoute
 import timber.log.Timber
 
@@ -29,11 +30,13 @@ fun WelcomeScreen(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Top
     ) {
-        if (BuildConfig.FLAVOR == "whitelabel") {
+        if (BuildConfig.FLAVOR == WHITE_LABEL_FLAVOR) {
             Timber.d("Show Text for Logo")
             Text(
                 text = "Your Logo here",
-                color = MaterialTheme.colorScheme.onPrimary
+                color = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier.padding(start = 20.dp, top = 60.dp),
+                style = MaterialTheme.typography.headlineLarge
             )
         } else {
             Image(
