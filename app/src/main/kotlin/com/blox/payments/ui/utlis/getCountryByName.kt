@@ -18,13 +18,7 @@ enum class Countries(val countryName: String, val countryCode: String) {
             )
         }
 
-        fun getCountryByName(countryName: String): Country {
-            val enumValue = enumValueOf<Countries>(countryName.uppercase(Locale.ROOT))
-
-            return Country(
-                enumValue.countryName,
-                enumValue.countryCode
-            )
-        }
+        fun getCountryCodeByName(countryName: String): String =
+            enumValueOf<Countries>(countryName.uppercase(Locale.ROOT)).countryCode
     }
 }

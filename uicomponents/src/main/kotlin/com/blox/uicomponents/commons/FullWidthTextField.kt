@@ -20,6 +20,7 @@ import timber.log.Timber
 fun FullWidthTextField(
     value: String,
     hint: String,
+    prefix: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onValueChange: (String) -> Unit
 ) {
@@ -37,6 +38,7 @@ fun FullWidthTextField(
             modifier = Modifier.fillMaxWidth(.8f),
             textStyle = TextStyle.Default,
             label = { Text(text = hint) },
+            prefix = prefix,
             keyboardOptions = keyboardOptions
         )
     }
