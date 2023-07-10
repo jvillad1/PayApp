@@ -21,7 +21,7 @@ fun ForgotPasswordScreen() {
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = drawable.ic_direct_pay),
+            painter = painterResource(id = drawable.ic_company),
             contentDescription = stringResource(id = R.string.logo_accessibility),
             modifier = Modifier.padding(top = 40.dp).size(80.dp).align(Alignment.CenterHorizontally)
         )

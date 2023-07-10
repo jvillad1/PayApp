@@ -24,19 +24,24 @@ class RegistrationViewModel @Inject constructor(
     var uiState by mutableStateOf(RegistrationUiState())
         private set
 
-    fun updateFirstName(firstNameInput: String) {
-        uiState = uiState.copy(firstName = firstNameInput)
+    var firstName by mutableStateOf("")
+        private set
+    var lastName by mutableStateOf("")
+        private set
+
+    fun updateFirstName(input: String) {
+        firstName = input
     }
 
-    fun updateLastName(lastNameInput: String) {
-        uiState = uiState.copy(lastName = lastNameInput)
+    fun updateLastName(input: String) {
+        lastName = input
     }
 
     fun validateLegalName() {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(Dispatchers.IO) {
-            Timber.d("First name: ${uiState.firstName} and Last name: ${uiState.lastName}")
-            validateLegalName.invoke(uiState.firstName, uiState.lastName)
+            Timber.d("First name: $firstName and Last name: $lastName")
+            validateLegalName.invoke(firstName, lastName)
                 .onSuccess { isValid ->
                     Timber.d("This is a success")
                     withContext(Dispatchers.Main) {

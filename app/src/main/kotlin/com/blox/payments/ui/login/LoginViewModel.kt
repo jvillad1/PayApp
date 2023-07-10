@@ -5,18 +5,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blox.payments.domain.registration.usecases.ValidateLegalName
+import com.blox.payments.domain.login.usecases.Login
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val validateLegalName: ValidateLegalName
+    private val login: Login
 ) : ViewModel() {
 
     private var fetchJob: Job? = null
@@ -24,19 +24,24 @@ class LoginViewModel @Inject constructor(
     var uiState by mutableStateOf(LoginUiState())
         private set
 
-    fun updateFirstName(firstNameInput: String) {
-        uiState = uiState.copy(firstName = firstNameInput)
+    var email by mutableStateOf("")
+        private set
+    var password by mutableStateOf("")
+        private set
+
+    fun updateEmail(input: String) {
+        email = input
     }
 
-    fun updateLastName(lastNameInput: String) {
-        uiState = uiState.copy(lastName = lastNameInput)
+    fun updatePassword(input: String) {
+        password = input
     }
 
-    fun validateLegalName() {
+    fun login() {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(Dispatchers.IO) {
-            Timber.d("First name: ${uiState.firstName} and Last name: ${uiState.lastName}")
-            validateLegalName.invoke(uiState.firstName, uiState.lastName)
+            Timber.d("Email: $email and Password: $password")
+            login.invoke(email, password)
                 .onSuccess { isValid ->
                     Timber.d("This is a success")
                     withContext(Dispatchers.Main) {

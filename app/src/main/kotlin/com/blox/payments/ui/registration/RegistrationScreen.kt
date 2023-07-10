@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -63,22 +64,26 @@ fun LegalNameScreen(viewModel: RegistrationViewModel) {
         )
         BodyLargeText(text = stringResource(id = R.string.registration_legal_name_description))
         FullWidthTextField(
+            value = viewModel.firstName,
             hint = stringResource(id = R.string.registration_legal_name_first_name_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
-                keyboardType = KeyboardType.Text
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
             )
         ) {
-            viewModel.updateFirstName(it.text)
+            viewModel.updateFirstName(it)
         }
         FullWidthTextField(
+            value = viewModel.lastName,
             hint = stringResource(id = R.string.registration_legal_name_last_name_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
-                keyboardType = KeyboardType.Text
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updateLastName(it.text)
+            viewModel.updateLastName(it)
         }
         FullWidthButton(text = stringResource(id = R.string.registration_legal_name_continue_cta)) {
             viewModel.validateLegalName()

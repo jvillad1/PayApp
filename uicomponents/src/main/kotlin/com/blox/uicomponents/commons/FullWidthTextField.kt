@@ -8,27 +8,21 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import timber.log.Timber
 
 @Composable
 fun FullWidthTextField(
+    value: String,
     hint: String,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    onValueChange: (TextFieldValue) -> Unit
+    onValueChange: (String) -> Unit
 ) {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,9 +30,8 @@ fun FullWidthTextField(
         horizontalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
-            value = text,
+            value = value,
             onValueChange = { fieldValue ->
-                text = fieldValue
                 onValueChange(fieldValue)
             },
             modifier = Modifier.fillMaxWidth(.8f),
@@ -53,6 +46,7 @@ fun FullWidthTextField(
 @Composable
 fun FullWidthTextFieldPreview() {
     FullWidthTextField(
+        value = "",
         hint = "First Name",
         keyboardOptions = KeyboardOptions(
             capitalization = KeyboardCapitalization.Words,

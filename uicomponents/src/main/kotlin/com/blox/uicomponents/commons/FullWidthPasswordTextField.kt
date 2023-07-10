@@ -21,7 +21,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,11 +29,11 @@ import timber.log.Timber
 
 @Composable
 fun FullWidthPasswordTextField(
+    value: String,
     hint: String,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    onValueChange: (TextFieldValue) -> Unit
+    onValueChange: (String) -> Unit
 ) {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
     var showPassword by remember { mutableStateOf(value = false) }
 
     Row(
@@ -44,9 +43,8 @@ fun FullWidthPasswordTextField(
         horizontalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
-            value = text,
+            value = value,
             onValueChange = { fieldValue ->
-                text = fieldValue
                 onValueChange(fieldValue)
             },
             modifier = Modifier.fillMaxWidth(.8f),
@@ -89,6 +87,7 @@ fun FullWidthPasswordTextField(
 @Composable
 fun FullWidthPasswordTextFieldPreview() {
     FullWidthPasswordTextField(
+        value = "",
         hint = "First Name",
         keyboardOptions = KeyboardOptions(
             capitalization = KeyboardCapitalization.Words,

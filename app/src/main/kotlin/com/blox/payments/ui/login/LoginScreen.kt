@@ -43,7 +43,7 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Top
     ) {
         Image(
-            painter = painterResource(id = drawable.ic_direct_pay),
+            painter = painterResource(id = drawable.ic_company),
             contentDescription = stringResource(id = R.string.logo_accessibility),
             modifier = Modifier.padding(top = 40.dp)
                 .size(80.dp)
@@ -51,6 +51,7 @@ fun LoginScreen(
         )
         ScreenTitle(title = stringResource(id = R.string.login_title), paddingTop = 10.dp)
         FullWidthTextField(
+            value = viewModel.email,
             hint = stringResource(id = R.string.login_email_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
@@ -58,9 +59,10 @@ fun LoginScreen(
                 imeAction = ImeAction.Next
             )
         ) {
-            viewModel.updateFirstName(it.text)
+            viewModel.updateEmail(it)
         }
         FullWidthPasswordTextField(
+            value = viewModel.password,
             hint = stringResource(id = R.string.login_password_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
@@ -68,12 +70,14 @@ fun LoginScreen(
                 imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updateFirstName(it.text)
+            viewModel.updatePassword(it)
         }
         FullWidthButton(
             text = stringResource(id = R.string.login_continue_cta),
             onClick = {
                 // TODO: Call VM -> Backend Before navigation
+                viewModel.login()
+                // TODO: React to UI state to navigate
                 onSuccessfulLogin()
             },
             buttonColors = ButtonDefaults.buttonColors(

@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.blox.payments.ui.home.HomeScreen
 import com.blox.payments.ui.landing.WelcomeScreen
+import com.blox.payments.ui.login.ForgotPasswordScreen
 import com.blox.payments.ui.login.LoginScreen
 import com.blox.payments.ui.registration.RegistrationScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
@@ -40,7 +41,7 @@ fun PayAppCompose() {
         composable(
             route = NavigationRoute.FORGOT_PASSWORD
         ) {
-            RegistrationScreen()
+            ForgotPasswordScreen()
         }
         composable(
             route = NavigationRoute.REGISTRATION
