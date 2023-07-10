@@ -13,9 +13,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.payments.R.string
 import com.blox.uicomponents.commons.FullWidthButton
-import com.blox.uicomponents.commons.FullWidthClickableTextField
+import com.blox.uicomponents.commons.FullWidthTextField
 import com.blox.uicomponents.commons.ScreenTitle
-import timber.log.Timber
 
 @Composable
 fun RegistrationPhoneNumberScreen(
@@ -28,19 +27,17 @@ fun RegistrationPhoneNumberScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         ScreenTitle(title = stringResource(id = R.string.registration_phone_number_title))
-        FullWidthClickableTextField(
-            value = viewModel.country,
-            hint = stringResource(id = string.registration_country_label),
+        FullWidthTextField(
+            value = viewModel.phoneNumber,
+            hint = stringResource(id = string.registration_phone_number_label),
             keyboardOptions = KeyboardOptions(
-                capitalization = KeyboardCapitalization.Words,
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Go
-            ),
-            onClick = {
-//                showCountryDialog = true
-            },
-            onValueChange = { Timber.d("no-op") }
-        )
+                capitalization = KeyboardCapitalization.None,
+                keyboardType = KeyboardType.Phone,
+                imeAction = ImeAction.Done
+            )
+        ) {
+            viewModel.updatePhoneNumber(it)
+        }
         FullWidthButton(text = stringResource(id = string.continue_cta)) {
             viewModel.validatePhoneNumber()
         }

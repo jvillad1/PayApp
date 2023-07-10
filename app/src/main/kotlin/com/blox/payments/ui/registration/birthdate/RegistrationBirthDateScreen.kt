@@ -49,7 +49,7 @@ fun RegistrationBirthDateScreen(
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Go
+                imeAction = ImeAction.Done
             ),
             onClick = {
                 showDatePickerDialog(context, viewModel.birthDate) {

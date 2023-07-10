@@ -72,12 +72,14 @@ fun PayAppCompose() {
         composable(
             route = NavigationRoute.REGISTRATION_COUNTRY
         ) {
-            RegistrationCountryScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_PHONE_NUMBER)
+            RegistrationCountryScreen { selectedCountry ->
+                navController.navigate(
+                    "${NavigationRoute.REGISTRATION_PHONE_NUMBER}/$selectedCountry"
+                )
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_PHONE_NUMBER
+            route = "${NavigationRoute.REGISTRATION_PHONE_NUMBER}/{${NavigationArgument.COUNTRY}}"
         ) {
             RegistrationPhoneNumberScreen {
                 navController.navigate(NavigationRoute.HOME)

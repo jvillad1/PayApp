@@ -17,17 +17,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.payments.R.string
+import com.blox.payments.ui.utlis.Countries
 import com.blox.uicomponents.commons.CountryCodePickerDialog
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthClickableTextField
 import com.blox.uicomponents.commons.ScreenTitle
-import com.blox.uicomponents.model.Country
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @Composable
 fun RegistrationCountryScreen(
-    onSuccessfulCountry: () -> Unit
+    onSuccessfulCountry: (String) -> Unit
 ) {
     val viewModel = hiltViewModel<RegistrationCountryViewModel>()
     val uiState = viewModel.uiState
@@ -37,20 +37,14 @@ fun RegistrationCountryScreen(
         launch {
             if (uiState.countryCompleted) {
                 viewModel.countryCompletedHandled()
-                onSuccessfulCountry()
+                onSuccessfulCountry(viewModel.country)
             }
         }
     }
 
     if (showCountryDialog) {
         CountryCodePickerDialog(
-            countries = listOf(
-                Country("Brazil"),
-                Country("Colombia"),
-                Country("Mexico"),
-                Country("Peru"),
-                Country("United States")
-            ),
+            countries = Countries.toCountriesList(),
             onSelection = {
                 viewModel.updateCountry(it.name)
             },
@@ -70,7 +64,7 @@ fun RegistrationCountryScreen(
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Go
+                imeAction = ImeAction.Done
             ),
             onClick = {
                 showCountryDialog = true

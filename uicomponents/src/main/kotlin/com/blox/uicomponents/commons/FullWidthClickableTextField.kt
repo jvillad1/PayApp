@@ -42,10 +42,10 @@ fun FullWidthClickableTextField(
             modifier = Modifier.fillMaxWidth(.8f).clickable {
                 onClick()
             },
+            enabled = false,
             textStyle = TextStyle.Default,
             label = { Text(text = hint) },
             keyboardOptions = keyboardOptions,
-            enabled = false,
             colors = OutlinedTextFieldDefaults.colors(
                 disabledBorderColor = MaterialTheme.colorScheme.outline,
                 disabledTextColor = MaterialTheme.colorScheme.outline,
