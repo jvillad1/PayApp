@@ -1,12 +1,11 @@
-package com.blox.payments.ui.registration.country
+package com.blox.payments.ui.registration.phonenumber
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blox.payments.domain.registration.usecases.ValidateBirthDate
-import com.blox.payments.domain.registration.usecases.ValidateCountry
+import com.blox.payments.domain.registration.usecases.ValidatePhoneNumber
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -16,13 +15,13 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
-class RegistrationCountryViewModel @Inject constructor(
-    private val validateCountry: ValidateCountry
+class RegistrationPhoneNumberViewModel @Inject constructor(
+    private val validatePhoneNumber: ValidatePhoneNumber
 ) : ViewModel() {
 
     private var fetchJob: Job? = null
 
-    var uiState by mutableStateOf(RegistrationCountryUiState())
+    var uiState by mutableStateOf(RegistrationPhoneNumberState())
         private set
 
     var country by mutableStateOf("")
@@ -32,15 +31,15 @@ class RegistrationCountryViewModel @Inject constructor(
         country = input
     }
 
-    fun validateCountry() {
+    fun validatePhoneNumber() {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(Dispatchers.IO) {
             Timber.d("Country: $country")
-            validateCountry.invoke(country)
+            validatePhoneNumber.invoke(country)
                 .onSuccess { isValid ->
                     Timber.d("This is a success")
                     withContext(Dispatchers.Main) {
-                        uiState = uiState.copy(countryCompleted = isValid)
+                        uiState = uiState.copy(phoneNumberCompleted = isValid)
                     }
                 }
                 .onFailure { throwable ->
@@ -49,7 +48,7 @@ class RegistrationCountryViewModel @Inject constructor(
         }
     }
 
-    fun countryCompletedHandled() {
-        uiState = uiState.copy(countryCompleted = false)
+    fun phoneNumberCompletedHandled() {
+        uiState = uiState.copy(phoneNumberCompleted = false)
     }
 }

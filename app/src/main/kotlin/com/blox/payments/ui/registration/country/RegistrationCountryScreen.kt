@@ -66,7 +66,7 @@ fun RegistrationCountryScreen(
         )
         FullWidthClickableTextField(
             value = viewModel.country,
-            hint = stringResource(id = R.string.registration_country_cta),
+            hint = stringResource(id = R.string.registration_country_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text,
