@@ -14,7 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.payments.R.string
-import com.blox.payments.ui.utlis.Countries
+import com.blox.payments.domain.registration.model.Countries
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
 import com.blox.uicomponents.commons.ScreenTitle

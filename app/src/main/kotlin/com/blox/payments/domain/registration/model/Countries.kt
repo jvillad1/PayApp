@@ -1,4 +1,4 @@
-package com.blox.payments.ui.utlis // ktlint-disable filename
+package com.blox.payments.domain.registration.model
 
 import com.blox.uicomponents.model.Country
 import java.util.Locale
