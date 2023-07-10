@@ -35,6 +35,9 @@
     <string name="registration_country_title">What country do you live in?</string>
     <string name="registration_country_cta">Country</string>
 
+
+    <string name="registration_phone_number_title">What is your phone number?</string>
+
     <!-- Home -->
     <string name="home_title">Home</string>
 

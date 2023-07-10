@@ -16,9 +16,11 @@ import com.blox.payments.ui.login.LoginScreen
 import com.blox.payments.ui.registration.birthdate.RegistrationBirthDateScreen
 import com.blox.payments.ui.registration.country.RegistrationCountryScreen
 import com.blox.payments.ui.registration.legalname.RegistrationLegalNameScreen
+import com.blox.payments.ui.registration.phonenumber.RegistrationPhoneNumberScreen
 import com.blox.payments.ui.registration.refcode.RegistrationRefCodeScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 
+@Suppress("LongMethod")
 @Composable
 fun PayAppCompose() {
     val navController = rememberNavController()
@@ -72,6 +74,13 @@ fun PayAppCompose() {
         ) {
             RegistrationCountryScreen {
                 navController.navigate(NavigationRoute.REGISTRATION_PHONE_NUMBER)
+            }
+        }
+        composable(
+            route = NavigationRoute.REGISTRATION_PHONE_NUMBER
+        ) {
+            RegistrationPhoneNumberScreen {
+                navController.navigate(NavigationRoute.HOME)
             }
         }
         composable(

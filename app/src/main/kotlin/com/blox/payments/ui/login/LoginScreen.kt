@@ -30,6 +30,7 @@ import com.blox.uicomponents.commons.FullWidthPasswordTextField
 import com.blox.uicomponents.commons.FullWidthTextField
 import com.blox.uicomponents.commons.ScreenTitle
 
+@Suppress("LongMethod")
 @Composable
 fun LoginScreen(
     onSuccessfulLogin: () -> Unit,
