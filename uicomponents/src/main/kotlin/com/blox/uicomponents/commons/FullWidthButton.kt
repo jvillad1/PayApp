@@ -34,7 +34,7 @@ fun FullWidthButton(
         horizontalArrangement = Arrangement.Center
     ) {
         Button(
-            onClick = { onClick.invoke() },
+            onClick = { onClick() },
             modifier = Modifier.fillMaxWidth(.8f)
         ) {
             Text(text = text)

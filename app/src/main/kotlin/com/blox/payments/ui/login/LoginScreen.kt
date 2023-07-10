@@ -73,11 +73,11 @@ fun LoginScreen(
             viewModel.updatePassword(it)
         }
         FullWidthButton(
-            text = stringResource(id = R.string.login_continue_cta),
+            text = stringResource(id = R.string.continue_cta),
             onClick = {
-                // TODO: Call VM -> Backend Before navigation
+                // TECHDEBT: Call VM -> Backend Before navigation
                 viewModel.login()
-                // TODO: React to UI state to navigate
+                // TECHDEBT: React to UI state to navigate
                 onSuccessfulLogin()
             },
             buttonColors = ButtonDefaults.buttonColors(

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Common -->
+    <string name="continue_cta">Continue</string>
+
     <!-- Welcome -->
     <string name="welcome_sign_in_cta">Sign In</string>
     <string name="welcome_register_cta">Register</string>
@@ -9,7 +12,6 @@
     <string name="login_title">Sign In</string>
     <string name="login_email_label">Email</string>
     <string name="login_password_label">Password</string>
-    <string name="login_continue_cta">Continue</string>
     <string name="login_forgot_password_label">Forgot Password?</string>
     <string name="login_version_name">Version: %1$s</string>
 
@@ -17,14 +19,21 @@
     <string name="forgot_password_title">Forgot Password</string>
 
     <!-- Registration -->
+    <string name="registration_ref_code_description">Please enter the reference code if you have one, tap Continue otherwise.</string>
+    <string name="registration_ref_code_label">Reference code</string>
+
     <string name="registration_legal_name_title">What is your legal name?</string>
     <string name="registration_legal_name_description">Please enter your legal name, which must match your government ID.</string>
     <string name="registration_legal_name_first_name_label">First Name</string>
     <string name="registration_legal_name_last_name_label">Last Name</string>
-    <string name="registration_legal_name_continue_cta">Continue</string>
 
     <string name="registration_birth_date_title">What is your birth date?</string>
     <string name="registration_birth_date_description">We need to verify that you are 18 years old or older.</string>
+    <string name="registration_birth_date_cta">Birth Date</string>
+
+
+    <string name="registration_country_title">What country do you live in?</string>
+    <string name="registration_country_cta">Country</string>
 
     <!-- Home -->
     <string name="home_title">Home</string>

@@ -22,7 +22,11 @@ fun ScreenTitle(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = paddingTop),
+            .padding(
+                start = 20.dp,
+                top = paddingTop,
+                end = 20.dp
+            ),
         horizontalArrangement = Arrangement.Center
     ) {
         Text(

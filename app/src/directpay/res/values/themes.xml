@@ -9,4 +9,8 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/blue_light_40</item>
+    </style>
+
 </resources>

@@ -64,7 +64,7 @@ fun WelcomeScreen(
             }
             Button(
                 onClick = {
-                    onClick(NavigationRoute.REGISTRATION)
+                    onClick(NavigationRoute.REGISTRATION_REF_CODE)
                 },
                 modifier = Modifier.weight(1f).padding(start = 12.dp)
             ) {

@@ -54,7 +54,7 @@ fun NoNetworkScreen(
             )
             Button(
                 onClick = {
-                    onClick.invoke()
+                    onClick()
                 },
                 modifier = Modifier.padding(top = 16.dp)
             ) {

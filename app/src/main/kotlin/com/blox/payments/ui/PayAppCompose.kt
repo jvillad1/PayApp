@@ -13,7 +13,10 @@ import com.blox.payments.ui.home.HomeScreen
 import com.blox.payments.ui.landing.WelcomeScreen
 import com.blox.payments.ui.login.ForgotPasswordScreen
 import com.blox.payments.ui.login.LoginScreen
-import com.blox.payments.ui.registration.RegistrationScreen
+import com.blox.payments.ui.registration.birthdate.RegistrationBirthDateScreen
+import com.blox.payments.ui.registration.country.RegistrationCountryScreen
+import com.blox.payments.ui.registration.legalname.RegistrationLegalNameScreen
+import com.blox.payments.ui.registration.refcode.RegistrationRefCodeScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 
 @Composable
@@ -44,9 +47,32 @@ fun PayAppCompose() {
             ForgotPasswordScreen()
         }
         composable(
-            route = NavigationRoute.REGISTRATION
+            route = NavigationRoute.REGISTRATION_REF_CODE
         ) {
-            RegistrationScreen()
+            RegistrationRefCodeScreen {
+                navController.navigate(NavigationRoute.REGISTRATION_LEGAL_NAME)
+            }
+        }
+        composable(
+            route = NavigationRoute.REGISTRATION_LEGAL_NAME
+        ) {
+            RegistrationLegalNameScreen {
+                navController.navigate(NavigationRoute.REGISTRATION_BIRTH_DATE)
+            }
+        }
+        composable(
+            route = NavigationRoute.REGISTRATION_BIRTH_DATE
+        ) {
+            RegistrationBirthDateScreen {
+                navController.navigate(NavigationRoute.REGISTRATION_COUNTRY)
+            }
+        }
+        composable(
+            route = NavigationRoute.REGISTRATION_COUNTRY
+        ) {
+            RegistrationCountryScreen {
+                navController.navigate(NavigationRoute.REGISTRATION_PHONE_NUMBER)
+            }
         }
         composable(
             route = NavigationRoute.HOME
