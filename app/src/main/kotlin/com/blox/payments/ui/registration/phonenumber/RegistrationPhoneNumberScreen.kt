@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -17,6 +18,7 @@ import com.blox.payments.ui.utlis.Countries
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
 import com.blox.uicomponents.commons.ScreenTitle
+import kotlinx.coroutines.launch
 
 @Composable
 fun RegistrationPhoneNumberScreen(
@@ -24,6 +26,15 @@ fun RegistrationPhoneNumberScreen(
 ) {
     val viewModel = hiltViewModel<RegistrationPhoneNumberViewModel>()
     val uiState = viewModel.uiState
+
+    LaunchedEffect(uiState) {
+        launch {
+            if (uiState.phoneNumberCompleted) {
+                viewModel.phoneNumberCompletedHandled()
+                onSuccessfulPhoneNumber()
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize()
