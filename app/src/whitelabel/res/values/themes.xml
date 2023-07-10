@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.PayApp" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen" />
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/green_light_40</item>
+    </style>
+
+</resources>

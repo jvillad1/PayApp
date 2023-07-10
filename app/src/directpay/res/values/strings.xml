@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GoDirectPay</string>
+
+    <!-- Welcome -->
+    <string name="logo_accessibility">GoDirectPay Logo</string>
+
+</resources>

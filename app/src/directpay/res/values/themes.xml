@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.PayApp" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/blue_40</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/blue_light_40</item>
+    </style>
+
+</resources>

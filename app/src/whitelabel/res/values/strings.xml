@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pay App</string>
+
+    <!-- Welcome -->
+    <string name="logo_accessibility">Company Logo</string>
+
+</resources>

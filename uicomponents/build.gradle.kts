@@ -38,7 +38,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 }
 
@@ -59,7 +59,7 @@ dependencies {
     implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Media
-    implementation("com.google.accompanist:accompanist-placeholder-material:0.13.0")
+    implementation("com.google.accompanist:accompanist-placeholder-material:0.30.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("com.airbnb.android:lottie-compose:6.0.1")
 
