@@ -17,7 +17,7 @@ import com.blox.payments.R.drawable
 import com.blox.uicomponents.commons.ScreenTitle
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun SendScreen(navController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -26,6 +26,6 @@ fun HomeScreen(navController: NavHostController) {
             contentDescription = stringResource(id = R.string.logo_accessibility),
             modifier = Modifier.padding(top = 40.dp).size(80.dp).align(Alignment.CenterHorizontally)
         )
-        ScreenTitle(title = stringResource(id = R.string.home_title), paddingTop = 10.dp)
+        ScreenTitle(title = stringResource(id = R.string.send_title), paddingTop = 10.dp)
     }
 }

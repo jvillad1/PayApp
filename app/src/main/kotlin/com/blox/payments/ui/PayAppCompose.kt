@@ -20,7 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.blox.payments.ui.landing.WelcomeScreen
 import com.blox.payments.ui.login.ForgotPasswordScreen
 import com.blox.payments.ui.login.SignInScreen
-import com.blox.payments.ui.main.HomeScreen
+import com.blox.payments.ui.main.MainContainer
 import com.blox.payments.ui.navigation.LoginNavigationRoute
 import com.blox.payments.ui.navigation.MainNavigationRoute
 import com.blox.payments.ui.navigation.NavigationGraph
@@ -51,7 +51,7 @@ fun PayAppCompose() {
         }
         configureLoginGraph(navController)
         configureRegistrationGraph(navController)
-        configureMainGraph(navController)
+        configureMainGraph()
     }
 }
 
@@ -162,7 +162,7 @@ private fun NavGraphBuilder.configureRegistrationGraph(navController: NavHostCon
     }
 }
 
-private fun NavGraphBuilder.configureMainGraph(navController: NavHostController) {
+private fun NavGraphBuilder.configureMainGraph() {
     navigation(
         startDestination = MainNavigationRoute.Home.route,
         route = NavigationGraph.Main.route
@@ -170,7 +170,7 @@ private fun NavGraphBuilder.configureMainGraph(navController: NavHostController)
         composable(
             route = MainNavigationRoute.Home.route
         ) {
-            HomeScreen()
+            MainContainer()
         }
     }
 }
