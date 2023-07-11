@@ -1,4 +1,4 @@
-package com.blox.payments.ui.home
+package com.blox.payments.ui.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

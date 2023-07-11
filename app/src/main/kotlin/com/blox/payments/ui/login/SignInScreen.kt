@@ -31,7 +31,7 @@ import com.blox.uicomponents.commons.ScreenTitle
 
 @Suppress("LongMethod")
 @Composable
-fun LoginScreen(
+fun SignInScreen(
     viewModel: LoginViewModel,
     onSuccessfulLogin: () -> Unit,
     onForgotPassword: () -> Unit
