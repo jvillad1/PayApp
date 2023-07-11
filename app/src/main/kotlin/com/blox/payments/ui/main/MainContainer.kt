@@ -1,8 +1,12 @@
 package com.blox.payments.ui.main
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -10,7 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -30,6 +38,37 @@ fun MainContainer() {
 
     val navController = rememberNavController()
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(items[0].labelId),
+                        modifier = Modifier.fillMaxWidth(),
+                        color = MaterialTheme.colorScheme.onBackground,
+                        textAlign = TextAlign.Center
+                    )
+                },
+                backgroundColor = MaterialTheme.colorScheme.background,
+                contentColor = MaterialTheme.colorScheme.onSurface,
+                elevation = 8.dp,
+                navigationIcon = {
+                    Icon(
+                        imageVector = ImageVector.vectorResource(
+                            id = com.example.uicomponents.R.drawable.ic_visibility_off_filled
+                        ),
+                        contentDescription = null,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                },
+                actions = {
+                    Icon(
+                        imageVector = Icons.Filled.SwapHoriz,
+                        contentDescription = null,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+            )
+        },
         bottomBar = {
             BottomNavigation(
                 backgroundColor = MaterialTheme.colorScheme.primary
