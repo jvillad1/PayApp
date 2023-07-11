@@ -25,7 +25,9 @@ import com.blox.payments.ui.navigation.MainNavigationRoute
 fun MainContainer() {
     val items = listOf(
         MainNavigationRoute.Home,
-        MainNavigationRoute.Send
+        MainNavigationRoute.Send,
+        MainNavigationRoute.Deposit,
+        MainNavigationRoute.Withdraw
     )
 
     val navController = rememberNavController()
@@ -70,6 +72,8 @@ fun MainContainer() {
         ) {
             composable(MainNavigationRoute.Home.route) { HomeScreen(navController) }
             composable(MainNavigationRoute.Send.route) { SendScreen(navController) }
+            composable(MainNavigationRoute.Deposit.route) { DepositScreen(navController) }
+            composable(MainNavigationRoute.Withdraw.route) { WithdrawScreen(navController) }
         }
     }
 }
