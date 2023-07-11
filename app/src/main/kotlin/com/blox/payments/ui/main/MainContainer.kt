@@ -2,10 +2,12 @@ package com.blox.payments.ui.main
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -14,9 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -53,18 +53,16 @@ fun MainContainer() {
                 elevation = 8.dp,
                 navigationIcon = {
                     Icon(
-                        imageVector = ImageVector.vectorResource(
-                            id = com.example.uicomponents.R.drawable.ic_visibility_off_filled
-                        ),
+                        imageVector = Icons.Default.Person,
                         contentDescription = null,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                        modifier = Modifier.padding(horizontal = 16.dp).size(48.dp)
                     )
                 },
                 actions = {
                     Icon(
                         imageVector = Icons.Filled.SwapHoriz,
                         contentDescription = null,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                        modifier = Modifier.padding(horizontal = 16.dp).size(48.dp)
                     )
                 }
             )
