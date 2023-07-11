@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.blox.payments.R.string
+import com.blox.payments.R
 import com.blox.uicomponents.commons.BodyLargeText
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
@@ -25,10 +25,10 @@ fun RegistrationRefCodeScreen(
 
     Column {
         Spacer(modifier = Modifier.padding(top = 40.dp))
-        BodyLargeText(text = stringResource(id = string.registration_ref_code_description))
+        BodyLargeText(text = stringResource(id = R.string.registration_ref_code_description))
         FullWidthTextField(
             value = viewModel.refCode,
-            hint = stringResource(id = string.registration_ref_code_label),
+            hint = stringResource(id = R.string.registration_ref_code_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text,
@@ -37,7 +37,7 @@ fun RegistrationRefCodeScreen(
         ) {
             viewModel.updateRefCode(it)
         }
-        FullWidthButton(text = stringResource(id = string.continue_cta)) {
+        FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
             viewModel.withRefCode()
             onContinue()
         }

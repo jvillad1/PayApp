@@ -45,11 +45,11 @@ fun RegistrationBirthDateScreen(
         BodyLargeText(text = stringResource(id = R.string.registration_birth_date_description))
         FullWidthClickableTextField(
             value = viewModel.birthDate,
-            hint = stringResource(id = R.string.registration_birth_date_cta),
+            hint = stringResource(id = R.string.registration_birth_date_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Go
+                imeAction = ImeAction.Done
             ),
             onClick = {
                 showDatePickerDialog(context, viewModel.birthDate) {

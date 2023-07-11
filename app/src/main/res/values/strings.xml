@@ -29,14 +29,20 @@
 
     <string name="registration_birth_date_title">What is your birth date?</string>
     <string name="registration_birth_date_description">We need to verify that you are 18 years old or older.</string>
-    <string name="registration_birth_date_cta">Birth Date</string>
+    <string name="registration_birth_date_label">Birth Date</string>
 
 
     <string name="registration_country_title">What country do you live in?</string>
-    <string name="registration_country_cta">Country</string>
-
+    <string name="registration_country_label">Country</string>
 
     <string name="registration_phone_number_title">What is your phone number?</string>
+    <string name="registration_phone_number_label">Phone Number</string>
+
+    <string name="registration_email_title">What is your email?</string>
+    <string name="registration_email_label">Email</string>
+
+    <string name="registration_password_title">Create password</string>
+    <string name="registration_password_label">Password</string>
 
     <!-- Home -->
     <string name="home_title">Home</string>

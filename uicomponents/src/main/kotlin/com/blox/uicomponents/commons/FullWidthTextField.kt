@@ -16,10 +16,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import timber.log.Timber
 
+@Suppress("MagicNumber")
 @Composable
 fun FullWidthTextField(
     value: String,
     hint: String,
+    prefix: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onValueChange: (String) -> Unit
 ) {
@@ -37,6 +39,7 @@ fun FullWidthTextField(
             modifier = Modifier.fillMaxWidth(.8f),
             textStyle = TextStyle.Default,
             label = { Text(text = hint) },
+            prefix = prefix,
             keyboardOptions = keyboardOptions
         )
     }
