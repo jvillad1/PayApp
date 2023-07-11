@@ -1,9 +1,8 @@
-package com.blox.payments.ui.registration.phonenumber
+package com.blox.payments.ui.registration.email
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -13,24 +12,23 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
-import com.blox.payments.domain.registration.model.Countries
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
 import com.blox.uicomponents.commons.ScreenTitle
 import kotlinx.coroutines.launch
 
 @Composable
-fun RegistrationPhoneNumberScreen(
-    onSuccessfulPhoneNumber: () -> Unit
+fun RegistrationEmailScreen(
+    onSuccessfulEmail: () -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationPhoneNumberViewModel>()
+    val viewModel = hiltViewModel<RegistrationEmailViewModel>()
     val uiState = viewModel.uiState
 
     LaunchedEffect(uiState) {
         launch {
-            if (uiState.phoneNumberCompleted) {
-                viewModel.phoneNumberCompletedHandled()
-                onSuccessfulPhoneNumber()
+            if (uiState.emailCompleted) {
+                viewModel.emailCompletedHandled()
+                onSuccessfulEmail()
             }
         }
     }
@@ -38,25 +36,20 @@ fun RegistrationPhoneNumberScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        ScreenTitle(title = stringResource(id = R.string.registration_phone_number_title))
+        ScreenTitle(title = stringResource(id = R.string.registration_email_title))
         FullWidthTextField(
-            value = viewModel.phoneNumber,
-            hint = stringResource(id = R.string.registration_phone_number_label),
-            prefix = {
-                Text(
-                    Countries.getCountryCodeByName(viewModel.selectedCountry.orEmpty())
-                )
-            },
+            value = viewModel.email,
+            hint = stringResource(id = R.string.registration_email_label),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
-                keyboardType = KeyboardType.Phone,
+                keyboardType = KeyboardType.Email,
                 imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updatePhoneNumber(it)
+            viewModel.updateEmail(it)
         }
         FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
-            viewModel.validatePhoneNumber()
+            viewModel.validateEmail()
         }
     }
 }

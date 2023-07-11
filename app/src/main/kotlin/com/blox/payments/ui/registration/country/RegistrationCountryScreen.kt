@@ -16,7 +16,6 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
-import com.blox.payments.R.string
 import com.blox.payments.domain.registration.model.Countries
 import com.blox.uicomponents.commons.CountryCodePickerDialog
 import com.blox.uicomponents.commons.FullWidthButton
@@ -71,7 +70,7 @@ fun RegistrationCountryScreen(
             },
             onValueChange = { Timber.d("no-op") }
         )
-        FullWidthButton(text = stringResource(id = string.continue_cta)) {
+        FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
             viewModel.validateCountry()
         }
     }

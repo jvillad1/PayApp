@@ -9,6 +9,8 @@ object NavigationRoute {
     const val REGISTRATION_BIRTH_DATE = "registration_birth_date"
     const val REGISTRATION_COUNTRY = "registration_country"
     const val REGISTRATION_PHONE_NUMBER = "registration_phone_number"
+    const val REGISTRATION_EMAIL = "registration_email"
+    const val REGISTRATION_PASSWORD = "registration_password"
     const val HOME = "home"
 }
 
