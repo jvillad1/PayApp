@@ -52,6 +52,6 @@
 
     <!-- Home -->
     <string name="home_balance_label">Balance USD</string>
-    <string name="home_balance_value">US $%1$d</string>
+    <string name="home_balance_value">US $%1$s</string>
 
 </resources>
