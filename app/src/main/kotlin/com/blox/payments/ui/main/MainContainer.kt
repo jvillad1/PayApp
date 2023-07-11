@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.blox.payments.ui.navigation.MainNavigationRoute
 
+@Suppress("LongMethod")
 @Composable
 fun MainContainer() {
     val items = listOf(

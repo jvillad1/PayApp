@@ -16,6 +16,7 @@ import com.blox.payments.R
 import com.blox.payments.R.drawable
 import com.blox.uicomponents.commons.ScreenTitle
 
+@Suppress("UnusedPrivateMember")
 @Composable
 fun HomeScreen(navController: NavHostController) {
     Column(
