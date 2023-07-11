@@ -21,10 +21,10 @@ import com.blox.payments.ui.home.HomeScreen
 import com.blox.payments.ui.landing.WelcomeScreen
 import com.blox.payments.ui.login.ForgotPasswordScreen
 import com.blox.payments.ui.login.LoginScreen
-import com.blox.payments.ui.registration.birthdate.RegistrationBirthDateScreen
+import com.blox.payments.ui.registration.RegistrationBirthDateScreen
+import com.blox.payments.ui.registration.RegistrationLegalNameScreen
 import com.blox.payments.ui.registration.country.RegistrationCountryScreen
 import com.blox.payments.ui.registration.email.RegistrationEmailScreen
-import com.blox.payments.ui.registration.legalname.RegistrationLegalNameScreen
 import com.blox.payments.ui.registration.password.RegistrationPasswordScreen
 import com.blox.payments.ui.registration.phonenumber.RegistrationPhoneNumberScreen
 import com.blox.payments.ui.registration.refcode.RegistrationRefCodeScreen
@@ -97,7 +97,9 @@ private fun NavGraphBuilder.configureAuthGraph(navController: NavHostController)
         composable(
             route = AuthNavigationRoute.REGISTRATION_BIRTH_DATE
         ) {
-            RegistrationBirthDateScreen {
+            RegistrationBirthDateScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(AuthNavigationRoute.REGISTRATION_COUNTRY)
             }
         }

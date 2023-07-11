@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blox.payments.domain.login.usecases.Login
+import com.blox.payments.domain.registration.usecases.ValidateBirthDate
 import com.blox.payments.domain.registration.usecases.ValidateLegalName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,6 +17,7 @@ import timber.log.Timber
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
+    private val validateBirthDate: ValidateBirthDate,
     private val validateLegalName: ValidateLegalName
 ) : ViewModel() {
 
@@ -27,6 +28,7 @@ class RegistrationViewModel @Inject constructor(
 
     var firstName by mutableStateOf("")
     var lastName by mutableStateOf("")
+    var birthDate by mutableStateOf("")
 
     fun validateLegalName() {
         fetchJob?.cancel()
@@ -47,5 +49,26 @@ class RegistrationViewModel @Inject constructor(
 
     fun legalNameCompletedHandled() {
         uiState = uiState.copy(legalNameCompleted = false)
+    }
+
+    fun validateBirthDate() {
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch(Dispatchers.IO) {
+            Timber.d("Birth Date: $birthDate")
+            validateBirthDate.invoke(birthDate)
+                .onSuccess { isValid ->
+                    Timber.d("This is a success")
+                    withContext(Dispatchers.Main) {
+                        uiState = uiState.copy(birthDateCompleted = isValid)
+                    }
+                }
+                .onFailure { throwable ->
+                    Timber.wtf(throwable, "This is a failure")
+                }
+        }
+    }
+
+    fun birthDateCompletedHandled() {
+        uiState = uiState.copy(birthDateCompleted = false)
     }
 }

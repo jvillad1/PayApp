@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.legalname
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardOptions
