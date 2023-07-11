@@ -26,6 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.blox.payments.ui.navigation.MainNavigationRoute
+import java.util.Locale
 
 @Suppress("LongMethod")
 @Composable
@@ -40,10 +41,17 @@ fun MainContainer() {
     val navController = rememberNavController()
     Scaffold(
         topBar = {
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentDestination = navBackStackEntry?.destination
+
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(items[0].labelId),
+                        text = items.find {
+                            it.route == currentDestination?.route
+                        }?.route.orEmpty().replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
+                        },
                         modifier = Modifier.fillMaxWidth(),
                         color = MaterialTheme.colorScheme.onBackground,
                         textAlign = TextAlign.Center
