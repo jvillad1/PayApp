@@ -23,5 +23,5 @@ object MainNavigationRoute {
 }
 
 object NavigationArgument {
-    const val COUNTRY = "country"
+    const val TBD = "tbd"
 }

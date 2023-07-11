@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.country
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.payments.domain.registration.model.Countries
 import com.blox.uicomponents.commons.CountryCodePickerDialog
@@ -26,9 +25,9 @@ import timber.log.Timber
 
 @Composable
 fun RegistrationCountryScreen(
+    viewModel: RegistrationViewModel,
     onSuccessfulCountry: (String) -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationCountryViewModel>()
     val uiState = viewModel.uiState
     var showCountryDialog by remember { mutableStateOf(false) }
 
@@ -45,7 +44,7 @@ fun RegistrationCountryScreen(
         CountryCodePickerDialog(
             countries = Countries.toCountriesList(),
             onSelection = {
-                viewModel.updateCountry(it.name)
+                viewModel.country = it.name
             },
             dismiss = { showCountryDialog = false }
         )

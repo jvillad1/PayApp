@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.refcode
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +11,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.uicomponents.commons.BodyLargeText
 import com.blox.uicomponents.commons.FullWidthButton
@@ -19,10 +18,9 @@ import com.blox.uicomponents.commons.FullWidthTextField
 
 @Composable
 fun RegistrationRefCodeScreen(
+    viewModel: RegistrationViewModel,
     onContinue: () -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationRefCodeViewModel>()
-
     Column {
         Spacer(modifier = Modifier.padding(top = 40.dp))
         BodyLargeText(text = stringResource(id = R.string.registration_ref_code_description))
@@ -35,7 +33,7 @@ fun RegistrationRefCodeScreen(
                 imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updateRefCode(it)
+            viewModel.refCode = it
         }
         FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
             viewModel.withRefCode()

@@ -22,12 +22,12 @@ import com.blox.payments.ui.landing.WelcomeScreen
 import com.blox.payments.ui.login.ForgotPasswordScreen
 import com.blox.payments.ui.login.LoginScreen
 import com.blox.payments.ui.registration.RegistrationBirthDateScreen
+import com.blox.payments.ui.registration.RegistrationCountryScreen
+import com.blox.payments.ui.registration.RegistrationEmailScreen
 import com.blox.payments.ui.registration.RegistrationLegalNameScreen
-import com.blox.payments.ui.registration.country.RegistrationCountryScreen
-import com.blox.payments.ui.registration.email.RegistrationEmailScreen
-import com.blox.payments.ui.registration.password.RegistrationPasswordScreen
-import com.blox.payments.ui.registration.phonenumber.RegistrationPhoneNumberScreen
-import com.blox.payments.ui.registration.refcode.RegistrationRefCodeScreen
+import com.blox.payments.ui.registration.RegistrationPasswordScreen
+import com.blox.payments.ui.registration.RegistrationPhoneNumberScreen
+import com.blox.payments.ui.registration.RegistrationRefCodeScreen
 import com.blox.payments.ui.theme.PayApplicationTheme
 
 @Suppress("LongMethod")
@@ -81,7 +81,9 @@ private fun NavGraphBuilder.configureAuthGraph(navController: NavHostController)
         composable(
             route = AuthNavigationRoute.REGISTRATION_REF_CODE
         ) {
-            RegistrationRefCodeScreen {
+            RegistrationRefCodeScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(AuthNavigationRoute.REGISTRATION_LEGAL_NAME)
             }
         }
@@ -106,30 +108,38 @@ private fun NavGraphBuilder.configureAuthGraph(navController: NavHostController)
         composable(
             route = AuthNavigationRoute.REGISTRATION_COUNTRY
         ) {
-            RegistrationCountryScreen { selectedCountry ->
+            RegistrationCountryScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(
-                    "${AuthNavigationRoute.REGISTRATION_PHONE_NUMBER}/$selectedCountry"
+                    AuthNavigationRoute.REGISTRATION_PHONE_NUMBER
                 )
             }
         }
         composable(
-            route = "${AuthNavigationRoute.REGISTRATION_PHONE_NUMBER}/{${NavigationArgument.COUNTRY}}"
+            route = AuthNavigationRoute.REGISTRATION_PHONE_NUMBER
         ) {
-            RegistrationPhoneNumberScreen {
+            RegistrationPhoneNumberScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(AuthNavigationRoute.REGISTRATION_EMAIL)
             }
         }
         composable(
             route = AuthNavigationRoute.REGISTRATION_EMAIL
         ) {
-            RegistrationEmailScreen {
+            RegistrationEmailScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(AuthNavigationRoute.REGISTRATION_PASSWORD)
             }
         }
         composable(
             route = AuthNavigationRoute.REGISTRATION_PASSWORD
         ) {
-            RegistrationPasswordScreen {
+            RegistrationPasswordScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
                 navController.navigate(NavigationGraph.MAIN) {
                     popUpTo(NavigationGraph.AUTH) {
                         inclusive = true
