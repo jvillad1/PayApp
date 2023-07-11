@@ -1,10 +1,11 @@
-package com.blox.payments.ui.registration.legalname
+package com.blox.payments.ui.registration
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.blox.payments.domain.login.usecases.Login
 import com.blox.payments.domain.registration.usecases.ValidateLegalName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,27 +16,17 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @HiltViewModel
-class RegistrationLegalNameViewModel @Inject constructor(
+class RegistrationViewModel @Inject constructor(
     private val validateLegalName: ValidateLegalName
 ) : ViewModel() {
 
     private var fetchJob: Job? = null
 
-    var uiState by mutableStateOf(RegistrationLegalNameUiState())
+    var uiState by mutableStateOf(RegistrationUiState())
         private set
 
     var firstName by mutableStateOf("")
-        private set
     var lastName by mutableStateOf("")
-        private set
-
-    fun updateFirstName(input: String) {
-        firstName = input
-    }
-
-    fun updateLastName(input: String) {
-        lastName = input
-    }
 
     fun validateLegalName() {
         fetchJob?.cancel()

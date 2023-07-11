@@ -1,6 +1,11 @@
 package com.blox.payments.ui
 
-object NavigationRoute {
+object NavigationGraph {
+    const val AUTH = "auth"
+    const val MAIN = "main"
+}
+
+object AuthNavigationRoute {
     const val WELCOME = "welcome"
     const val LOGIN = "login"
     const val FORGOT_PASSWORD = "forgot_password"
@@ -11,6 +16,9 @@ object NavigationRoute {
     const val REGISTRATION_PHONE_NUMBER = "registration_phone_number"
     const val REGISTRATION_EMAIL = "registration_email"
     const val REGISTRATION_PASSWORD = "registration_password"
+}
+
+object MainNavigationRoute {
     const val HOME = "home"
 }
 

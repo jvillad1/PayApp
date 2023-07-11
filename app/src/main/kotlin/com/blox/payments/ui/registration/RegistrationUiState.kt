@@ -1,6 +1,6 @@
-package com.blox.payments.ui.registration.legalname
+package com.blox.payments.ui.registration
 
-data class RegistrationLegalNameUiState(
+data class RegistrationUiState(
     val legalNameCompleted: Boolean = false,
     val firstNameError: Boolean = false,
     val lastNameError: Boolean = false

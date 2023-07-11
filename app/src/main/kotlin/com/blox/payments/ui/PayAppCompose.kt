@@ -4,10 +4,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.blox.payments.ui.home.HomeScreen
 import com.blox.payments.ui.landing.WelcomeScreen
@@ -28,85 +36,131 @@ fun PayAppCompose() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = NavigationRoute.WELCOME
+        startDestination = NavigationGraph.AUTH
+    ) {
+        configureAuthGraph(navController)
+
+        configureMainGraph(navController)
+    }
+}
+
+private fun NavGraphBuilder.configureAuthGraph(navController: NavHostController) {
+    navigation(
+        startDestination = AuthNavigationRoute.WELCOME,
+        route = NavigationGraph.AUTH
     ) {
         composable(
-            route = NavigationRoute.WELCOME
+            route = AuthNavigationRoute.WELCOME
         ) {
             WelcomeScreen { destination ->
                 navController.navigate(destination)
             }
         }
         composable(
-            route = NavigationRoute.LOGIN
+            route = AuthNavigationRoute.LOGIN
         ) {
             LoginScreen(
-                onSuccessfulLogin = { navController.navigate(NavigationRoute.HOME) },
-                onForgotPassword = { navController.navigate(NavigationRoute.FORGOT_PASSWORD) }
+                viewModel = it.sharedViewModel(navController = navController),
+                onSuccessfulLogin = {
+                    navController.navigate(NavigationGraph.MAIN) {
+                        popUpTo(NavigationGraph.AUTH) {
+                            inclusive = true
+                        }
+                    }
+                },
+                onForgotPassword = {
+                    navController.navigate(AuthNavigationRoute.FORGOT_PASSWORD)
+                }
             )
         }
         composable(
-            route = NavigationRoute.FORGOT_PASSWORD
+            route = AuthNavigationRoute.FORGOT_PASSWORD
         ) {
             ForgotPasswordScreen()
         }
         composable(
-            route = NavigationRoute.REGISTRATION_REF_CODE
+            route = AuthNavigationRoute.REGISTRATION_REF_CODE
         ) {
             RegistrationRefCodeScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_LEGAL_NAME)
+                navController.navigate(AuthNavigationRoute.REGISTRATION_LEGAL_NAME)
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_LEGAL_NAME
+            route = AuthNavigationRoute.REGISTRATION_LEGAL_NAME
         ) {
-            RegistrationLegalNameScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_BIRTH_DATE)
+            RegistrationLegalNameScreen(
+                viewModel = it.sharedViewModel(navController = navController)
+            ) {
+                navController.navigate(AuthNavigationRoute.REGISTRATION_BIRTH_DATE)
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_BIRTH_DATE
+            route = AuthNavigationRoute.REGISTRATION_BIRTH_DATE
         ) {
             RegistrationBirthDateScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_COUNTRY)
+                navController.navigate(AuthNavigationRoute.REGISTRATION_COUNTRY)
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_COUNTRY
+            route = AuthNavigationRoute.REGISTRATION_COUNTRY
         ) {
             RegistrationCountryScreen { selectedCountry ->
                 navController.navigate(
-                    "${NavigationRoute.REGISTRATION_PHONE_NUMBER}/$selectedCountry"
+                    "${AuthNavigationRoute.REGISTRATION_PHONE_NUMBER}/$selectedCountry"
                 )
             }
         }
         composable(
-            route = "${NavigationRoute.REGISTRATION_PHONE_NUMBER}/{${NavigationArgument.COUNTRY}}"
+            route = "${AuthNavigationRoute.REGISTRATION_PHONE_NUMBER}/{${NavigationArgument.COUNTRY}}"
         ) {
             RegistrationPhoneNumberScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_EMAIL)
+                navController.navigate(AuthNavigationRoute.REGISTRATION_EMAIL)
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_EMAIL
+            route = AuthNavigationRoute.REGISTRATION_EMAIL
         ) {
             RegistrationEmailScreen {
-                navController.navigate(NavigationRoute.REGISTRATION_PASSWORD)
+                navController.navigate(AuthNavigationRoute.REGISTRATION_PASSWORD)
             }
         }
         composable(
-            route = NavigationRoute.REGISTRATION_PASSWORD
+            route = AuthNavigationRoute.REGISTRATION_PASSWORD
         ) {
             RegistrationPasswordScreen {
-                navController.navigate(NavigationRoute.HOME)
+                navController.navigate(NavigationGraph.MAIN) {
+                    popUpTo(NavigationGraph.AUTH) {
+                        inclusive = true
+                    }
+                }
             }
         }
+    }
+}
+
+private fun NavGraphBuilder.configureMainGraph(navController: NavHostController) {
+    navigation(
+        startDestination = MainNavigationRoute.HOME,
+        route = NavigationGraph.MAIN
+    ) {
         composable(
-            route = NavigationRoute.HOME
+            route = MainNavigationRoute.HOME
         ) {
             HomeScreen()
         }
     }
+}
+
+@Composable
+private inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(
+    navController: NavController
+): T {
+    val navGraphRoute = destination.parent?.route ?: hiltViewModel()
+    val parentEntry = remember(this) {
+        navController.getBackStackEntry(navGraphRoute)
+    }
+
+    return hiltViewModel(parentEntry)
 }
 
 @Preview(showBackground = true)
