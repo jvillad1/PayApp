@@ -49,13 +49,13 @@ fun PayAppCompose() {
                 navController.navigate(destination)
             }
         }
-        configureLoginGraph(navController)
-        configureRegistrationGraph(navController)
-        configureMainGraph()
+        loginGraph(navController)
+        registrationGraph(navController)
+        mainGraph()
     }
 }
 
-private fun NavGraphBuilder.configureLoginGraph(navController: NavHostController) {
+private fun NavGraphBuilder.loginGraph(navController: NavHostController) {
     navigation(
         startDestination = LoginNavigationRoute.SignIn.route,
         route = NavigationGraph.Login.route
@@ -67,7 +67,7 @@ private fun NavGraphBuilder.configureLoginGraph(navController: NavHostController
                 viewModel = it.sharedViewModel(navController = navController),
                 onSuccessfulLogin = {
                     navController.navigate(NavigationGraph.Main.route) {
-                        popUpTo(NavigationGraph.Login.route) {
+                        popUpTo(NavigationGraph.Welcome.route) {
                             inclusive = true
                         }
                     }
@@ -86,7 +86,7 @@ private fun NavGraphBuilder.configureLoginGraph(navController: NavHostController
 }
 
 @Suppress("LongMethod")
-private fun NavGraphBuilder.configureRegistrationGraph(navController: NavHostController) {
+private fun NavGraphBuilder.registrationGraph(navController: NavHostController) {
     navigation(
         startDestination = RegistrationNavigationRoute.RefCode.route,
         route = NavigationGraph.Registration.route
@@ -154,7 +154,7 @@ private fun NavGraphBuilder.configureRegistrationGraph(navController: NavHostCon
                 viewModel = it.sharedViewModel(navController = navController)
             ) {
                 navController.navigate(NavigationGraph.Main.route) {
-                    popUpTo(NavigationGraph.Registration.route) {
+                    popUpTo(NavigationGraph.Welcome.route) {
                         inclusive = true
                     }
                 }
@@ -163,7 +163,7 @@ private fun NavGraphBuilder.configureRegistrationGraph(navController: NavHostCon
     }
 }
 
-private fun NavGraphBuilder.configureMainGraph() {
+private fun NavGraphBuilder.mainGraph() {
     navigation(
         startDestination = MainNavigationRoute.Home.route,
         route = NavigationGraph.Main.route
