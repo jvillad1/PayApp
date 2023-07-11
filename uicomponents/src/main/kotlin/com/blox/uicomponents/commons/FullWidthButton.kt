@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@Suppress("MagicNumber")
 @Composable
 fun FullWidthButton(
     text: String,

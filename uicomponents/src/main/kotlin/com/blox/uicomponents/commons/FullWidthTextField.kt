@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import timber.log.Timber
 
+@Suppress("MagicNumber")
 @Composable
 fun FullWidthTextField(
     value: String,

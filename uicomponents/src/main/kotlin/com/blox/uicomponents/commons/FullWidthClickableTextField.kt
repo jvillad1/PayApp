@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import timber.log.Timber
 
+@Suppress("LongParameterList", "MagicNumber")
 @Composable
 fun FullWidthClickableTextField(
     value: String,

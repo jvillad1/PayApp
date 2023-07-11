@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.example.uicomponents.R
 import timber.log.Timber
 
+@Suppress("MagicNumber")
 @Composable
 fun FullWidthPasswordTextField(
     value: String,
