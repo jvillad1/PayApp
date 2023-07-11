@@ -51,5 +51,7 @@
     <string name="withdraw_title">Withdraw</string>
 
     <!-- Home -->
+    <string name="home_balance_label">Balance USD</string>
+    <string name="home_balance_value">US $%1$d</string>
 
 </resources>

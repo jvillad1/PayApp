@@ -11,16 +11,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun BodyLargeText(
-    text: String
+    text: String,
+    paddingTop: Dp = 0.dp
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 20.dp),
+            .padding(
+                start = 20.dp,
+                top = paddingTop,
+                end = 20.dp
+            ),
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
