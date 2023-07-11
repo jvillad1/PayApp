@@ -85,6 +85,7 @@ private fun NavGraphBuilder.configureLoginGraph(navController: NavHostController
     }
 }
 
+@Suppress("LongMethod")
 private fun NavGraphBuilder.configureRegistrationGraph(navController: NavHostController) {
     navigation(
         startDestination = RegistrationNavigationRoute.RefCode.route,

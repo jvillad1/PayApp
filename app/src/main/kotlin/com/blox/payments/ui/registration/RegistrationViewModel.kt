@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
+@Suppress("LongParameterList", "TooManyFunctions")
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
     private val validateBirthDate: ValidateBirthDate,
