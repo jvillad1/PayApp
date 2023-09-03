@@ -19,7 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.blox.payments.BuildConfig
 import com.blox.payments.R
 import com.blox.payments.commons.constants.WHITE_LABEL_FLAVOR
-import com.blox.payments.ui.NavigationRoute
+import com.blox.payments.ui.navigation.LoginNavigationRoute
+import com.blox.payments.ui.navigation.RegistrationNavigationRoute
 import timber.log.Timber
 
 @Composable
@@ -53,7 +54,7 @@ fun WelcomeScreen(
         ) {
             Button(
                 onClick = {
-                    onClick(NavigationRoute.LOGIN)
+                    onClick(LoginNavigationRoute.SignIn.route)
                 },
                 modifier = Modifier.weight(1f).padding(end = 12.dp)
             ) {
@@ -64,7 +65,7 @@ fun WelcomeScreen(
             }
             Button(
                 onClick = {
-                    onClick(NavigationRoute.REGISTRATION_REF_CODE)
+                    onClick(RegistrationNavigationRoute.RefCode.route)
                 },
                 modifier = Modifier.weight(1f).padding(start = 12.dp)
             ) {

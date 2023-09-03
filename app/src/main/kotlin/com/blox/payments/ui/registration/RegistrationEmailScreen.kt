@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.email
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
@@ -19,9 +18,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun RegistrationEmailScreen(
+    viewModel: RegistrationViewModel,
     onSuccessfulEmail: () -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationEmailViewModel>()
     val uiState = viewModel.uiState
 
     LaunchedEffect(uiState) {
@@ -46,7 +45,7 @@ fun RegistrationEmailScreen(
                 imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updateEmail(it)
+            viewModel.email = it
         }
         FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
             viewModel.validateEmail()

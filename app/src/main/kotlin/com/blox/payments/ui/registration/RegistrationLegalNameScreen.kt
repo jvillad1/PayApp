@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.legalname
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,7 +9,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.uicomponents.commons.BodyLargeText
 import com.blox.uicomponents.commons.FullWidthButton
@@ -19,9 +18,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun RegistrationLegalNameScreen(
+    viewModel: RegistrationViewModel,
     onSuccessfulLegalName: () -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationLegalNameViewModel>()
     val uiState = viewModel.uiState
 
     LaunchedEffect(uiState) {
@@ -48,7 +47,7 @@ fun RegistrationLegalNameScreen(
                 imeAction = ImeAction.Next
             )
         ) {
-            viewModel.updateFirstName(it)
+            viewModel.firstName = it
         }
         FullWidthTextField(
             value = viewModel.lastName,
@@ -59,7 +58,7 @@ fun RegistrationLegalNameScreen(
                 imeAction = ImeAction.Done
             )
         ) {
-            viewModel.updateLastName(it)
+            viewModel.lastName = it
         }
         FullWidthButton(text = stringResource(id = R.string.continue_cta)) {
             viewModel.validateLegalName()

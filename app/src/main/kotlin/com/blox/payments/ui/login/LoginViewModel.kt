@@ -45,7 +45,7 @@ class LoginViewModel @Inject constructor(
                 .onSuccess { isValid ->
                     Timber.d("This is a success")
                     withContext(Dispatchers.Main) {
-                        uiState = uiState.copy(legalNameCompleted = isValid)
+                        uiState = uiState.copy(loginCompleted = isValid)
                     }
                 }
                 .onFailure { throwable ->

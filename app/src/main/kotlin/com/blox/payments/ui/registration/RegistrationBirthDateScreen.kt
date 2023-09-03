@@ -1,4 +1,4 @@
-package com.blox.payments.ui.registration.birthdate
+package com.blox.payments.ui.registration
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardOptions
@@ -10,7 +10,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.R
 import com.blox.payments.ui.utlis.showDatePickerDialog
 import com.blox.uicomponents.commons.BodyLargeText
@@ -22,9 +21,9 @@ import timber.log.Timber
 
 @Composable
 fun RegistrationBirthDateScreen(
+    viewModel: RegistrationViewModel,
     onSuccessfulBirthDate: () -> Unit
 ) {
-    val viewModel = hiltViewModel<RegistrationBirthDateViewModel>()
     val uiState = viewModel.uiState
     val context = LocalContext.current
 
@@ -53,7 +52,7 @@ fun RegistrationBirthDateScreen(
             ),
             onClick = {
                 showDatePickerDialog(context, viewModel.birthDate) {
-                    viewModel.updateBirthDate(it)
+                    viewModel.birthDate = it
                 }
             },
             onValueChange = { Timber.d("no-op") }

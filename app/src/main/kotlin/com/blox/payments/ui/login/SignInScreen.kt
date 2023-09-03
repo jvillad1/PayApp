@@ -21,7 +21,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.blox.payments.BuildConfig
 import com.blox.payments.R
 import com.blox.payments.R.drawable
@@ -32,11 +31,11 @@ import com.blox.uicomponents.commons.ScreenTitle
 
 @Suppress("LongMethod")
 @Composable
-fun LoginScreen(
+fun SignInScreen(
+    viewModel: LoginViewModel,
     onSuccessfulLogin: () -> Unit,
     onForgotPassword: () -> Unit
 ) {
-    val viewModel = hiltViewModel<LoginViewModel>()
     val uiState = viewModel.uiState
 
     Column(

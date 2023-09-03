@@ -44,7 +44,14 @@
     <string name="registration_password_title">Create password</string>
     <string name="registration_password_label">Password</string>
 
-    <!-- Home -->
+    <!-- Main -->
     <string name="home_title">Home</string>
+    <string name="send_title">Send</string>
+    <string name="deposit_title">Deposit</string>
+    <string name="withdraw_title">Withdraw</string>
+
+    <!-- Home -->
+    <string name="home_balance_label">Balance USD</string>
+    <string name="home_balance_value">US $%1$s</string>
 
 </resources>
