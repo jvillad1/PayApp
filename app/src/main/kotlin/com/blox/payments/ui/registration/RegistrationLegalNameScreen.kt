@@ -10,7 +10,6 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.blox.payments.R
-import com.blox.payments.ui.registration.RegistrationViewModel
 import com.blox.uicomponents.commons.BodyLargeText
 import com.blox.uicomponents.commons.FullWidthButton
 import com.blox.uicomponents.commons.FullWidthTextField
